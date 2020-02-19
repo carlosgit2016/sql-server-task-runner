@@ -1,0 +1,39 @@
+{
+    "manifestVersion": 1,
+    "id": "sql-server-task-runner",
+    "name": "SQL Server Task Runner",
+    "version": "0.0.26",
+    "publisher": "CARLOSFLOR",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Run SQL Server query on database",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"        
+    },
+    "files": [
+        {
+            "path": "sqlTaskRunnerTask"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "sqlTaskRunnerTask"
+            }
+        }
+    ],
+    "galleryFlags": [
+        "Public"
+    ]
+}

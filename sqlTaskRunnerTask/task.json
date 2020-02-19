@@ -1,0 +1,85 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+  "id": "0872cc8d-be7c-45d2-b7fb-fb602d68e874",
+  "name": "SQLServerTaskRunner",
+  "friendlyName": "SQL Server Task Runner",
+  "description": "Run SQL Server scripts on a remote database",
+  "helpMarkDown": "See more on [Github](https://github.com/carlosgit2016/sql-server-task-runner#sql-server-task-runner)",
+  "category": "Utility",  
+  "author": "Carlos Flor",
+  "version": {
+    "Major": 0,
+    "Minor": 0,
+    "Patch": 16
+  },
+  "instanceNameFormat": "Execute SQL Script on $(databaseserver)",
+  "inputs": [
+    {
+      "name": "databaseserver",
+      "type": "string",
+      "label": "Database Server",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The database name can be 128 characters or less"
+    },
+    {
+      "name": "databasename",
+      "type": "string",
+      "label": "Database Name",
+      "required": true,
+      "helpMarkDown": "The name or network address of the instance of SQL Server to which to connect. The port number can be specified after the `server name: server=tcp:servername, portnumber`"
+    },
+    {
+      "name": "databaseuser",
+      "type": "string",
+      "label": "Database User",
+      "required": true,
+      "helpMarkDown": "User account with the correct privileges to access the database"
+    },
+    {
+      "name": "databasepassword",
+      "type": "string",
+      "label": "Database Password",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The password for the SQL Server account logging on"
+    },
+    {
+      "name": "querysource",
+      "label": "Script Source",
+      "type": "radio",
+      "defaultValue": "FilePath",
+      "options": {
+        "FilePath": "FilePath",
+        "Inline": "Inline"
+      },
+      "helpMarkDown": "Target script type, must be a file path or inline script"
+    },
+    {
+      "name": "sqlquery",
+      "type": "string",
+      "label": "SQL Script",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Inline SQL script to execute",
+      "properties": {
+        "resizable": "true",
+        "rows": "15"
+      },
+      "visibleRule": "querysource = Inline"
+    },
+    {
+      "name": "filepath",
+      "label": "File Path",
+      "type": "filePath",
+      "required": true,
+      "visibleRule": "querysource = FilePath",
+      "helpMarkDown": "Path of the file with SQL script to execute"
+    }
+  ],
+  "execution": {
+    "Node10": {
+      "target": "dist/index.js"
+    }
+  }
+}
