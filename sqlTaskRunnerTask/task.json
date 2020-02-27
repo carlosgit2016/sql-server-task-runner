@@ -9,7 +9,7 @@
   "author": "Carlos Flor",
   "version": {
     "Major": 0,
-    "Minor": 0,
+    "Minor": 1,
     "Patch": 16
   },
   "instanceNameFormat": "Execute SQL Script on $(databaseserver)",
