@@ -9,7 +9,7 @@
   "author": "Carlos Flor",
   "version": {
     "Major": 0,
-    "Minor": 1,
+    "Minor": 2,
     "Patch": 16
   },
   "instanceNameFormat": "Execute SQL Script on $(databaseserver)",
@@ -75,11 +75,25 @@
       "required": true,
       "visibleRule": "querysource = FilePath",
       "helpMarkDown": "Path of the file with SQL script to execute"
+    },
+    {
+      "name": "encrypt",
+      "label": "Encrypt Connection",
+      "type": "boolean",
+      "required": false,
+      "helpMarkDown": "Define encryptation true or false to the connection string",
+      "groupName": "Advanced"
     }
   ],
   "execution": {
     "Node10": {
       "target": "dist/index.js"
     }
-  }
+  },
+  "groups": [
+    {
+      "name": "Advanced",
+      "displayName": "Advanced"
+    }
+  ]
 }
